@@ -1,0 +1,20 @@
+{
+  "project": "Project 6: Event-Driven Self-Review Loop",
+  "pr_number": 1,
+  "pr_branch": "feature/planted-bug-demo",
+  "base_branch": "main",
+  "pr_opened": true,
+  "first_review_received": true,
+  "first_review_result": "FAIL",
+  "planted_bug_commit": "db89df50e6a989e0f724eb1e3e6ebf540b40f9a8",
+  "bug_detected": true,
+  "bug_details": "Off-by-one slice truncation: [:-1] excludes final element",
+  "bug_fixed": true,
+  "fix_commit": "b1257c679fb1556d8e8d64c76fef6bfd6f2229c2",
+  "synchronize_event_fired": true,
+  "second_review_received": true,
+  "latest_review_result": "PASS",
+  "latest_reviewed_commit": "b1257c679fb1556d8e8d64c76fef6bfd6f2229c2",
+  "final_pass": true,
+  "timestamp": "2026-09-08 18:24:17 UTC"
+}

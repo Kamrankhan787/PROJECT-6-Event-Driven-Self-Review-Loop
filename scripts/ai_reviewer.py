@@ -289,8 +289,18 @@ def main():
     print(f"[Reviewer] Starting AI review for commit: {commit_sha}")
 
     if args.diff_file and os.path.exists(args.diff_file):
-        with open(args.diff_file, "r", encoding="utf-8") as f:
-            diff = f.read()
+        # Try multiple encodings — PowerShell > redirect produces UTF-16 LE with BOM (0xFF 0xFE)
+        for enc in ("utf-8-sig", "utf-16", "utf-8", "latin-1"):
+            try:
+                with open(args.diff_file, "r", encoding=enc) as f:
+                    diff = f.read()
+                break
+            except (UnicodeDecodeError, UnicodeError):
+                continue
+        else:
+            # Last resort: read as binary and decode with replacement
+            with open(args.diff_file, "rb") as f:
+                diff = f.read().decode("utf-8", errors="replace")
     else:
         diff = get_git_diff(args.base_ref, commit_sha)
 

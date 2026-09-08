@@ -14,7 +14,7 @@ def sum_range(numbers: Sequence[Number]) -> Number:
     Returns:
         The total sum of all numbers in the collection.
     """
-    return sum(numbers)
+    return sum(numbers[:-1])
 
 
 def average(numbers: Sequence[Number]) -> float:
